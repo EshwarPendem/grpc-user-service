@@ -43,10 +43,11 @@ This is a Golang gRPC service that provides specific functionalities for managin
 3. Access the gRPC service endpoints.
 
    a. Via Postman
-      -> open new request in postman and select the type as gRPC
+      -> open new request in postman (by clicking 'new' button beside 'import') and select the type as gRPC
       -> provide 'localhost:8081' in url 
-      -> click on import .proto file and provide the path for .proto file in downloaded folder.
-      -> select the endpoint and provide messege(json request body)
+      -> click select a method
+      -> click on import .proto file and provide the path for .proto file in downloaded folder. (optional)
+      -> select the endpoint and provide message(json request body)
       -> click on invoke.
 
    sample request body :- 
@@ -69,6 +70,7 @@ This is a Golang gRPC service that provides specific functionalities for managin
       -> install grpcurl and verify installation.
 
    sample curl commands :- 
+      Note:- For mac os '\' characters may not be required.
       1.GetUserById
       ```bash
       grpcurl -v -d '{\"user_id\":5}' -plaintext localhost:8081 user.UserService/GetUserById 
