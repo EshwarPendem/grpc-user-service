@@ -64,11 +64,11 @@ func (s *userServiceServer) GetUsersByIds(ctx context.Context, req *proto.UserLi
 }
 
 
-func (s *userServiceServer) Search(ctx context.Context, req *proto.SearchRequest) (*proto.UserList, error) {
+func (s *userServiceServer) SearchUser(ctx context.Context, req *proto.SearchRequest) (*proto.UserList, error) {
 	if req.UserId==nil && req.City==nil && req.Fname==nil && req.Height==nil && req.Phone==nil && req.Married==nil {
 		return nil, fmt.Errorf("provide at lead one attribue of user as a filter")
 	}
-	if	req.Phone != nil && (int)(math.Log10((float64)(req.Phone.Value))) < 10 {
+	if	req.Phone != nil && (int)(math.Log10((float64)(req.Phone.Value))) != 9 {
 		return nil, fmt.Errorf("provide a valid non-negative 10 digit number as phone number")
 	}
 	if req.Height != nil && req.Height.Value <= 0 {

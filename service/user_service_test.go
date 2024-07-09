@@ -75,3 +75,35 @@ func TestGetUsersByIdsNotExist(t *testing.T) {
 		t.Errorf("invalidResponse should be nil, got %s", invalidResponse.String())
 	}
 }
+
+// At least one user matching the criteria.
+func TestSearchUserExist(t *testing.T) {
+	server := &userServiceServer{}
+
+	city := "New York"
+	var phone uint64 = 1234567890
+	response, err := server.SearchUser(context.Background(), 
+		&proto.SearchRequest{City: &wrapperspb.StringValue{Value: city},Phone: &wrapperspb.UInt64Value{Value: phone}})
+	if err != nil {
+		t.Errorf("Error should be nil, got %v", err)
+	}
+	if len(response.GetUsers()) == 0 {
+		t.Errorf("Expected %d users, got %d", 3, 0)
+	}
+}
+
+// No User matches the criteria
+func TestSearchUserNotExist(t *testing.T) {
+	server := &userServiceServer{}
+
+	city := "New York"
+	var phone uint64 = 9234567890
+	response, err := server.SearchUser(context.Background(), 
+		&proto.SearchRequest{City: &wrapperspb.StringValue{Value: city},Phone: &wrapperspb.UInt64Value{Value: phone}})
+	if err == nil {
+		t.Errorf("Error error got nil")
+	}
+	if len(response.GetUsers()) != 0 {
+		t.Errorf("Expected %d users, got %d", 0, len(response.GetUsers()))
+	}
+}

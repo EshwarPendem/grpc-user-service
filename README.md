@@ -63,7 +63,7 @@ This is a Golang gRPC service that provides specific functionalities for managin
    sample curl commands :- 
       1.GetUserById -> grpcurl -v -d '{\"user_id\":5}' -plaintext localhost:8081 user.UserService/GetUserById
       2.GetUsersByIds -> grpcurl -v -d '{\"user_ids\":[5,7,10,9]}' -plaintext localhost:8081 user.UserService/GetUsersByIds
-      3.SearchUser -> grpcurl -v -d '{"city":"New York", "phone":1234567890}' -plaintext localhost:8081 user.UserService/SearchUser
+      3.SearchUser -> grpcurl -v -d '{\"city\":\"New York\", \"phone\":1234567890}' -plaintext localhost:8081 user.UserService/SearchUser
 
 ## Running Tests
 
