@@ -62,10 +62,8 @@ This is a Golang gRPC service that provides specific functionalities for managin
       ```bash 
          {"city":{"value":"New York"}, "phone":{"value":1234567890}}
       ```
-         similary you can provide other attributes ("user_id","height","married") for search
-         Note: at least one attribute should be provided for search
-               phone number should be 10 digits
-               height, user_id, and phone should be positive values.
+   similary you can provide other attributes ("user_id","height","married") for search
+   Note: at least one attribute should be provided for search phone number should be 10 digitsheight, user_id, and phone should be positive values.
 
    b. Via grpcurl
       -> install grpcurl and verify installation.
