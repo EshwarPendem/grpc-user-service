@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+option go_package = "./proto";
+
+package user;
+
+service UserService {
+  rpc GetUserById (UserRequest) returns (User);
+  rpc GetUsersByIds (UserListRequest) returns (UserList);
+  rpc SearchUser (SearchRequest) returns (UserList);
+}
+
+//Request Messages
+/*
+ *google.protobuf values are used instead of primitive types because they will be nil if the value is not provided in request
+ *google.protobuf types request body is defferent form primitive type request body
+ *{"user_id":1} (for int64) --> {"user_id":{"value":1}} (for google.protobuf.Int64Value)
+ 
+ *https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/wrappers.proto
+*/
+message SearchRequest {
+  google.protobuf.UInt32Value user_id = 1;
+  google.protobuf.StringValue fname = 2;
+  google.protobuf.StringValue city = 3;
+  google.protobuf.UInt64Value phone = 4;
+  google.protobuf.FloatValue height = 5;
+  google.protobuf.BoolValue married = 6;
+}
+
+message UserRequest {
+  google.protobuf.UInt32Value user_id = 1;
+}
+
+message UserListRequest {
+  //google.protobuf is not used here as the length of the list indicates whether ids are provided or not.
+  repeated uint32 user_ids = 1;
+}
+
+//Response Messages
+
+message User {
+  uint32 id = 1;
+  string fname = 2;
+  string city = 3;
+  uint64 phone = 4;
+  float height = 5;
+  bool married = 6;
+}
+
+message UserList {
+  repeated User users = 1;
+}
