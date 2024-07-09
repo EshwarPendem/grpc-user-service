@@ -41,7 +41,9 @@ This is a Golang gRPC service that provides specific functionalities for managin
    The gRPC service will be accessible on port `8081`.
 
 3. Access the gRPC service endpoints.
+
    a. Via Postman
+```bash
       -> open new request in postman and select the type as gRPC
       -> provide 'localhost:8081' in url 
       -> click on import .proto file and provide the path for .proto file in downloaded folder.
@@ -56,15 +58,18 @@ This is a Golang gRPC service that provides specific functionalities for managin
          Note: at least one attribute should be provided for search
                phone number should be 10 digits
                height, user_id, and phone should be positive values.
-   
+```
    b. Via grpcurl
+```bash
       -> install grpcurl and verify installation.
 
    sample curl commands :- 
-      1.GetUserById -> grpcurl -v -d '{\"user_id\":5}' -plaintext localhost:8081 user.UserService/GetUserById
-      2.GetUsersByIds -> grpcurl -v -d '{\"user_ids\":[5,7,10,9]}' -plaintext localhost:8081 user.UserService/GetUsersByIds
-      3.SearchUser -> grpcurl -v -d '{\"city\":\"New York\", \"phone\":1234567890}' -plaintext localhost:8081 user.UserService/SearchUser
+      1.GetUserById -> grpcurl -v -d '{\"user_id\":5}' -plaintext localhost:8081 user.UserService/GetUserById 
 
+      2.GetUsersByIds -> grpcurl -v -d '{\"user_ids\":[5,7,10,9]}' -plaintext localhost:8081 user.UserService/GetUsersByIds 
+      
+      3.SearchUser -> grpcurl -v -d '{\"city\":\"New York\", \"phone\":1234567890}' -plaintext localhost:8081 user.UserService/SearchUser
+```
 ## Running Tests
 
 ```bash
