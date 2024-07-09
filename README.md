@@ -44,8 +44,8 @@ This is a Golang gRPC service that provides specific functionalities for managin
 4. Alternatively, build and run the application using Docker:
 
    ```bash
-   docker build -t go-simple-grpc-demo .
-   docker run -p 8081:8081 go-simple-grpc-demo
+   docker build -t grpc-user-service .
+   docker run -p 8081:8081 grpc-user-service
    ```
 
    The gRPC service in the Docker container will also be accessible on port `8081`.
