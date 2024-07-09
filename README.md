@@ -16,6 +16,7 @@ This is a Golang gRPC service that provides specific functionalities for managin
 ## Prerequisites
 
 - Go (https://go.dev/dl/) (at least Go 1.22.4) needs to be installed.
+- Docker (https://docs.docker.com/get-docker/) (if you want to run the application in a Docker container)
 - Postman needs to be installed
 - (optional) install 'grpcurl'(https://github.com/fullstorydev/grpcurl/releases) homebrew tool to use endpoints from terminal. It can be installed on windows as well.
    for macOS grpcurl can be installed as a brew tool.
@@ -39,6 +40,15 @@ This is a Golang gRPC service that provides specific functionalities for managin
    ```
 
    The gRPC service will be accessible on port `8081`.
+
+4. Alternatively, build and run the application using Docker:
+
+   ```bash
+   docker build -t go-simple-grpc-demo .
+   docker run -p 8081:8081 go-simple-grpc-demo
+   ```
+
+   The gRPC service in the Docker container will also be accessible on port `8081`.
 
 3. Access the gRPC service endpoints.
 
